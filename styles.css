@@ -1,0 +1,151 @@
+ /* Site-wide stuff */
+ body {
+	color: white;
+	letter-spacing: 1px;
+	background-color: #010a00;
+    font-family: Menlo, Consolas, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+	font-size: 14px;
+	margin: 0;
+}
+
+a {
+	color: deepskyblue;
+}
+
+p {
+	line-height: 22px;
+	font-size: inherit;
+}
+
+/* Title bar */
+.title-bar {
+	padding-left: 7px;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	background-image: linear-gradient(DarkGrey, DimGrey);
+	box-shadow: 0 4px 2px 0 DimGrey;
+	display: flex;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+ 	top: 0;
+}
+
+.title-buttons {
+  height: 0.75em;
+  width: 0.75em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.title-buttons:first-child {
+  background-color: #ff3b47;
+  border-color: #9d252b;
+}
+
+.title-buttons:nth-child(2) {
+  background-color: #ffc100;
+  border-color: #9d802c;
+}
+
+.title-buttons:nth-child(3) {
+  background-color: #00d742;
+  border-color: #049931;
+}
+
+/* Table classes */
+
+table.exTable {
+	width:90%;
+	font-size: inherit;
+}
+
+table.skTable {
+	width:90%;
+	font-size: inherit;
+}
+
+table.mnTable {
+	width:90%;
+	font-size: inherit;
+}
+
+td {
+	padding: 4px;
+}
+
+/* General containers */
+
+.site-container {
+	padding-top: 4px;
+	border: 1px;
+	border-style: solid;
+	border-color: DimGrey;
+	height:100%;
+	overflow: scroll;
+
+}
+
+.output-row {
+	margin-bottom: 2px;
+	margin-top: 2px;
+	padding-left: 10px;
+	padding-right: 15px;
+	padding-top: 2px;
+	padding-bottom: 4px;
+	color: inherit;
+	max-width: 750px;
+}
+
+.input-row {
+	margin-bottom: 2px;
+	margin-top: 2px;
+	padding-left:10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: inherit;
+}
+
+.terminal-container {
+	padding-bottom: 5px;
+}
+
+.green-hl {
+	color: limegreen;
+}
+
+
+/* Terminal / input classes */
+.terminal-input input:focus {
+	display: none;
+	position: absolute;
+	height: 80%;
+	top: 10%;
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	opacity: 1;
+}
+
+input[type=text] {
+	background-color: transparent;
+	letter-spacing: 1px;
+	font-family:inherit;
+	font-size: 14px;
+	outline: none;
+	width: 25%;
+	color: limegreen;
+	border: 0;
+	height: 20px;
+}
+
+@keyframes blink {
+	from { 
+		opacity: 1; 
+	}
+
+	to { 
+		opacity: 0; 
+	}
+}
