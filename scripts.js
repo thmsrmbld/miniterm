@@ -2,18 +2,17 @@
 let machineName = "root@tkr.onln ~ # "
 let terminalHistoryLog = []
 let cursorLogPosition = terminalHistoryLog.length
-let userBirthday = "08/11/1987"
+const userBirthday = "08/11/1987"
 
 /* Set some core DOM items */
-let terminalContainer = document.getElementsByClassName("terminal-container")[0]
-let currentTerminalDiv = document.getElementsByClassName("terminal-container")[0]
+let terminalContainer = currentTerminalDiv = document.getElementsByClassName("terminal-container")[0]
 let siteContainer = document.getElementsByClassName("site-container")[0]
 
 /* These count the number of tables of a certain type present in the DOM */
 let manTableCount = expTableCount = skiTableCount = 0
 
 /* A structure of system commands used for the man pages and valid command list */
-let commandData = [
+const commandData = [
     {
         "name": "ls",
         "description": "Lists the valid commands that the terminal will accept. Try some out!"
@@ -157,7 +156,6 @@ const initialisePage = () => {
     setTimeout(mockCommands, 1000)
     setTimeout(loadUserInput, 1400)
     setTimeout(commandListener, 1600)
-    /* Captures and refocuses the input periodically, in case it disappears */
     setInterval("inputRefocus()", 1800)
 }
 
@@ -168,6 +166,7 @@ const inputRefocus = () => {
         commandLine.focus()
     }
 }
+
 const commandListener = () => {
     /* Main command listener - processes and runs the keyboard input */
     let userInput = document.getElementsByClassName("terminal-input")[0]
@@ -201,8 +200,8 @@ const commandListener = () => {
                 terminalHistoryLog.push(rawInput)
                 cursorLogPosition = terminalHistoryLog.length + 1
             }
-            /* Before processing input, set the previous line to the screen */
-            setPreviousLine(rawInput)
+            /* Before processing input, write to the previous line on the screen */
+            setPrevLine(rawInput)
 
             /* This is the main switch statement takes the cleaned input and
              decides which command to fire */
@@ -257,7 +256,7 @@ const commandListener = () => {
     })
 }
 
-const setPreviousLine = (rawInput) => {
+const setPrevLine = (rawInput) => {
     /* Get the relevant DOM objects, and set the content of the previous
      terminal line */
     let previousLineDiv = document.createElement("div")
@@ -328,14 +327,7 @@ const experiencePrinter = (experienceData) => {
 
     /* Build table */
     let expTable = document.createElement("table")
-
-    expTable.setAttribute(
-        "class", "exTb" + 
-        expTableCount + 
-        " ag exTable" +
-        " output-row"
-    )
-
+    expTable.setAttribute("class", "exTb" + expTableCount + " ag exTable" +" output-row")
     siteContainer.insertBefore(expTable, currentTerminalDiv)
 
     let exTable = document.getElementsByClassName("exTb" + expTableCount)[0]
@@ -431,7 +423,7 @@ const clearTerminal = () => {
     while(agLines[0]){
         agLines[0].parentNode.removeChild(agLines[0])
     }
-    /* Null the number of tables now in the DOM, cause they're all gone */
+    /* Null the count of active tables now in the DOM, cause they're all gone */
      expTableCount = skiTableCount = manTableCount = 0
 }
 
