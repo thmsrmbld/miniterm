@@ -1,4 +1,4 @@
-# thomaskr.online
+# miniterm.online
 
 Project description goes here.
 
