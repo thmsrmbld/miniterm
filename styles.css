@@ -17,7 +17,6 @@ p {
 	font-size: inherit;
 }
 
-/* Title bar */
 .title-bar {
 	padding-left: 7px;
 	padding-top: 5px;
@@ -55,7 +54,6 @@ p {
 }
 
 /* Table classes */
-
 table.exTable {
 	width:90%;
 	font-size: inherit;
@@ -76,7 +74,6 @@ td {
 }
 
 /* General containers */
-
 .site-container {
 	padding-top: 4px;
 	border: 1px;
@@ -111,12 +108,13 @@ td {
 	padding-bottom: 5px;
 }
 
+/* Green highlight */
 .green-hl {
 	color: limegreen;
 }
 
 
-/* Terminal / input classes */
+/* Terminal & input classes */
 .terminal-input input:focus {
 	display: none;
 	position: absolute;

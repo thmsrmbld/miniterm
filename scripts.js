@@ -1,20 +1,18 @@
-// Initialise the log history & cursor position
+/* Initialise the log history & cursor position */
 let machineName = "root@tkr.onln ~ # "
 let terminalHistoryLog = []
 let cursorLogPosition = terminalHistoryLog.length
 let userBirthday = "08/11/1987"
 
-// Set some core DOM items
+/* Set some core DOM items */
 let terminalContainer = document.getElementsByClassName("terminal-container")[0]
 let currentTerminalDiv = document.getElementsByClassName("terminal-container")[0]
 let siteContainer = document.getElementsByClassName("site-container")[0]
 
-// These count the number of tables of a certain type present in the DOM
-let manTableCount = 0
-let expTableCount = 0
-let skiTableCount = 0
+/* These count the number of tables of a certain type present in the DOM */
+let manTableCount = expTableCount = skiTableCount = 0
 
-// A structure of system commands used for the man pages and valid command list
+/* A structure of system commands used for the man pages and valid command list */
 let commandData = [
     {
         "name": "ls",
@@ -60,7 +58,7 @@ let commandData = [
     }
 ]
 
-let skillsData = [
+const skillsData = [
     {
         "name": "• Python"
     },
@@ -96,7 +94,7 @@ let skillsData = [
     }
 ]
 
-let experienceData = [
+const experienceData = [
     {
         "title": "Python Developer",
         "company": "Reckon Digital",
@@ -141,8 +139,8 @@ let experienceData = [
     }
 ]
 
-// Content for the whois command. Designed to be a string of any length
-let whoisContent = "<p>Hey, I\'m Thomas, and I\'m a technologist, software " +
+/* Content for the whois command. Designed to be a string of any length */
+const whoisContent = "<p>Hey, I\'m Thomas, and I\'m a technologist, software " +
   "developer (mostly, back-end), writer and citizen based in London. \n" +
   "For the last ten years, I\'ve worked agency-side in hands-on leadership " +
   "roles with some of the largest science, finance and private innovation " +
@@ -152,26 +150,25 @@ let whoisContent = "<p>Hey, I\'m Thomas, and I\'m a technologist, software " +
   "soul music and political theory. This weird little website is built in " +
   "raw Javascript on the front, and Python on the back!</p>"
 
-function initialisePage(){
+const initialisePage = () => {
     /* Initialises the page. We just sequentially load in the initial page
      elements. We could do this with CSS, but ...here we are) */
     setTimeout(mockLogin, 400)
     setTimeout(mockCommands, 1000)
     setTimeout(loadUserInput, 1400)
     setTimeout(commandListener, 1600)
-    // Captures and refocuses the input periodically, in case it disappears
+    /* Captures and refocuses the input periodically, in case it disappears */
     setInterval("inputRefocus()", 1800)
 }
 
-function inputRefocus() {
+const inputRefocus = () => {
     /* Refocuses the command line automatically if it falls out of focus */
     let commandLine = document.getElementsByClassName("terminal-input")[0]
     if (document.activeElement !== commandLine) {
         commandLine.focus()
     }
 }
-
-function commandListener(){
+const commandListener = () => {
     /* Main command listener - processes and runs the keyboard input */
     let userInput = document.getElementsByClassName("terminal-input")[0]
     userInput.addEventListener("keyup", function(event) {
@@ -191,7 +188,7 @@ function commandListener(){
               cursorLogPosition - 1
             )[0]
         }
-        // Otherwise, we handle the keyboard Enter event
+        /* Otherwise, we handle the keyboard Enter event */
         else if (event.key === "Enter") {
             event.preventDefault()
             /* We need to transform the input for processing, but also
@@ -199,19 +196,19 @@ function commandListener(){
             let rawInput = userInput.value
             let cleanedInput = userInput.value.toLowerCase()
 
-            // We only store non-blanks
+            /* We only store non-blanks */
             if (rawInput !== "") {
                 terminalHistoryLog.push(rawInput)
                 cursorLogPosition = terminalHistoryLog.length + 1
             }
-            // Before processing input, set the previous line to the screen
+            /* Before processing input, set the previous line to the screen */
             setPreviousLine(rawInput)
 
             /* This is the main switch statement takes the cleaned input and
              decides which command to fire */
             switch(cleanedInput) {
                 case "":
-                    // Do nothing
+                    /* Do nothing */
                     break
                 case "cd":
                     cdPrinter()
@@ -248,11 +245,11 @@ function commandListener(){
                     whoisPrinter()
                     break
                 default:
-                    // Otherwise, the command doesn't exist
+                    /* Otherwise, the command doesn't exist */
                     commandNotFoundPrinter(cleanedInput)
             }
 
-            // Finally, force a reset and re-focus of terminal input field
+            /* Finally, force a reset and re-focus of terminal input field */
             userInput.value = ""
             userInput.focus()
             terminalContainer.scrollIntoView(false)
@@ -260,7 +257,7 @@ function commandListener(){
     })
 }
 
-function setPreviousLine(rawInput){
+const setPreviousLine = (rawInput) => {
     /* Get the relevant DOM objects, and set the content of the previous
      terminal line */
     let previousLineDiv = document.createElement("div")
@@ -269,7 +266,7 @@ function setPreviousLine(rawInput){
     siteContainer.insertBefore(previousLineDiv, currentTerminalDiv)
 }
 
-function uptimePrinter(){
+const uptimePrinter = () => {
     /* Prints how long you've been alive in days since your birthday */
     let duration = new Date(userBirthday)
     let todaysDate = new Date()
@@ -277,24 +274,24 @@ function uptimePrinter(){
     daysDelta = daysDelta / (1000 * 3600 * 24)
     let timeNow = new Date().toLocaleTimeString([], {hour: "2-digit", minute:"2-digit"})
 
-    //To display the final uptime
+    /* To display the final uptime */
     let uptimeDiv = document.createElement("p")
     uptimeDiv.setAttribute("class", "ag output-row")
     uptimeDiv.innerHTML = timeNow + " up " + Math.round((daysDelta + Number.EPSILON) * 100) + " days, 1 user, load averages: 5.24 5.18 5.42"
     siteContainer.insertBefore(uptimeDiv, currentTerminalDiv)
 }
 
-function skillsPrinter(skillsData){
+const skillsPrinter = (skillsData) => {
     /* Prints a list of skills to screen */
     skiTableCount += 1
 
-    // Build the title
+    /* Build title */
     let skillsStart = document.createElement("div")
     skillsStart.setAttribute("class", "ag output-row")
     skillsStart.innerHTML = " --- SKILLS --- "
     siteContainer.insertBefore(skillsStart, currentTerminalDiv)
 
-    // Build the table
+    /* Build table */
     let skillsTable = document.createElement("table")
     skillsTable.setAttribute("class", "skTb" + skiTableCount + " ag skTable" +
       " output-row")
@@ -305,7 +302,7 @@ function skillsPrinter(skillsData){
     generateTable(skTable, skillsData)
 }
 
-function generateTable(table, data) {
+const generateTable = (table, data) => {
     /* Generic table generator for tabular data,
     consumes a data structure and spits out a HTML table.*/
     for (let element of data) {
@@ -319,20 +316,26 @@ function generateTable(table, data) {
     }
 }
 
-function experiencePrinter(experienceData){
+const experiencePrinter = (experienceData) => {
     /* Prints work experiences to the screen. */
     expTableCount += 1
 
-    // Build the title
+    /* Build title */
     let expStart = document.createElement("div")
     expStart.setAttribute("class", "ag output-row")
     expStart.innerHTML = " --- EXPERIENCE --- "
     siteContainer.insertBefore(expStart, currentTerminalDiv)
 
-    // Build the table
+    /* Build table */
     let expTable = document.createElement("table")
-    expTable.setAttribute("class", "exTb" + expTableCount + " ag exTable" +
-      " output-row")
+
+    expTable.setAttribute(
+        "class", "exTb" + 
+        expTableCount + 
+        " ag exTable" +
+        " output-row"
+    )
+
     siteContainer.insertBefore(expTable, currentTerminalDiv)
 
     let exTable = document.getElementsByClassName("exTb" + expTableCount)[0]
@@ -341,17 +344,17 @@ function experiencePrinter(experienceData){
     siteContainer.insertBefore(exTable, currentTerminalDiv)
 }
 
-function manPrinter(commandData){
-    /* Prints man pages to screen */
+const manPrinter = (commandData) => {
+    /* Prints man-pages to screen */
     manTableCount += 1
 
-    // Build title
+    /* Build title */
     let manStart = document.createElement("div")
     manStart.setAttribute("class", "ag output-row")
     manStart.innerHTML = " --- BSD General Commands Manual --- "
     siteContainer.insertBefore(manStart, currentTerminalDiv)
 
-    // Build table
+    /* Build table */
     let manTable = document.createElement("table")
     manTable.setAttribute("class", "mnTb" + manTableCount + " ag mnTable" +
       " output-row")
@@ -363,23 +366,23 @@ function manPrinter(commandData){
     siteContainer.insertBefore(mnTable, currentTerminalDiv)
 }
 
-function whoisPrinter(){
-    /* Prints 'about' details to screen */
+const whoisPrinter = () => {
+    /* Prints 'whois' details to screen */
     let whoisDiv = document.createElement("p")
     whoisDiv.innerHTML = whoisContent
     whoisDiv.setAttribute("class", "ag output-row")
     siteContainer.insertBefore(whoisDiv, currentTerminalDiv)
 }
 
-function cdPrinter(){
-    /* Prints 'about' details to screen */
+const cdPrinter = () => {
+    /* Prints 'cd' easter egg to screen */
     let cdDiv = document.createElement("p")
     cdDiv.innerHTML = "...cd? Where ya gonna change to, kid? This ain\'t a REAL machine..."
     cdDiv.setAttribute("class", "ag output-row")
     siteContainer.insertBefore(cdDiv, currentTerminalDiv)
 }
 
-function commandPrinter(commandData){
+const commandPrinter = (commandData) => {
     /* Builds a string of available commands and outputs to terminal */
     let commandArray = []
 
@@ -394,7 +397,7 @@ function commandPrinter(commandData){
     siteContainer.insertBefore(lsDiv, currentTerminalDiv)
 }
 
-function commandNotFoundPrinter(userInput, rawInput){
+const commandNotFoundPrinter = (userInput, rawInput) => {
     /* We need to create two line outputs to emulate bash (the error is an
      extra line */
     let commandNotFoundDiv = document.createElement("div")
@@ -403,7 +406,7 @@ function commandNotFoundPrinter(userInput, rawInput){
     siteContainer.insertBefore(commandNotFoundDiv, currentTerminalDiv)
 }
 
-function contactPrinter(){
+const contactPrinter = () => {
     /* Prints contact details to screen */
     let contactDiv = document.createElement("div")
     let email = "thomasrumbold@gmail.com"
@@ -412,7 +415,7 @@ function contactPrinter(){
     siteContainer.insertBefore(contactDiv, currentTerminalDiv)
 }
 
-function historyPrinter(terminalHistoryLog){
+const historyPrinter = (terminalHistoryLog) => {
     /* Prints terminal history to screen */
     terminalHistoryLog.forEach((entryItem, index) => {
         let historyOutputRow = document.createElement("div")
@@ -422,24 +425,24 @@ function historyPrinter(terminalHistoryLog){
     })
 }
 
-function clearTerminal(){
+const clearTerminal = () => {
     /* All autogenerated output has the class "ag", so we just delete those */
     let agLines = document.getElementsByClassName("ag")
     while(agLines[0]){
         agLines[0].parentNode.removeChild(agLines[0])
     }
-    // Null the number of tables now in the DOM, cause they're all gone
+    /* Null the number of tables now in the DOM, cause they're all gone */
      expTableCount = skiTableCount = manTableCount = 0
 }
 
-function mockLogin(){
+const mockLogin = () => {
     /* Micro function for mocking the 'login' process, called on first page
      load timer */
     let todaysDate = new Date()
     document.getElementsByClassName("login-time")[0].innerHTML = "Last login: " + todaysDate.toLocaleString() + " on ttys001"
 }
 
-function mockCommands(){
+const mockCommands = () => {
     /* Micro function for showing which commands are available, called on
      first page load timer */
     const instructionText = "- 🖥️ 'ls' lists valid commands. ⬆️ & ⬇️ arrows" +
@@ -447,7 +450,7 @@ function mockCommands(){
     document.getElementsByClassName("command-list")[0].innerHTML = instructionText
 }
 
-function loadUserInput(){
+const loadUserInput = () => {
     /* Colors the terminal input element and creates the input on load */
     terminalContainer.style.backgroundColor = "rgba(0, 255, 0, 0.06)"
     let userInput = document.createElement("input")
@@ -458,5 +461,5 @@ function loadUserInput(){
     terminalContainer.appendChild(userInput)
 }
 
-// Just calls and runs the whole system :)
+/* Just calls and runs the whole system :) */
 initialisePage()
