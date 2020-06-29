@@ -7,7 +7,7 @@ personal portfolio website for back-end developers who are terrible at design. I
 emulates the behaviour of a bash / linux terminal - and you can add your own
 custom commands to create an interactive, command-line style personal / CV site!
 
-**You can see it live and in action at: https://thomaskr.online/*(
+**You can see it live and in action at: https://thomaskr.online/**
 
 (Use the 'ls' command to list the commands it comes with.)
 
