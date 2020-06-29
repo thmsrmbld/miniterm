@@ -11,7 +11,7 @@ custom commands to create an interactive, command-line style personal / CV site!
 
 (Use the 'ls' command to list the commands it comes with.)
 
-##Miniterm is:
+## Miniterm is:
 
 * Super simple / light - it's just three files of vanilla HTML, CSS and
  JavaScript.
@@ -19,7 +19,7 @@ custom commands to create an interactive, command-line style personal / CV site!
 * Sort of responsive. Kind of. Well...who's using terminal on their phone
  anyway?
 
-## Using miniterm
+## Get started now!
 
 * Because it's only three files of HTML, CSS and JS, you can do whatever you
  like with it. I host it on a tiny Flask (Python) application, but you could
