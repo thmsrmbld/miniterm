@@ -42,13 +42,13 @@ custom commands to create an interactive, command-line style personal / CV site!
  
 ## Contributing
 
-* If you've got ideas for improvement, or new commands, I'd love to hear them. 
-Feel free to file an issue, create a branch and submit a pull request.
+* If you've got questions, ideas for improvement, or new commands, I'd love to
+ hear them. Feel free to file an issue, create a branch and submit a pull request.
 
 ## License
 
 * Free for personal use. I'd love to know if you use it and what you do with it
-! :)
+! 😊
 
 ## Twitter
 
