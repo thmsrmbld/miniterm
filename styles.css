@@ -32,7 +32,7 @@ p {
 }
 
 .macos-buttons {
-	min-width: 150px;
+	min-width: 130px;
 	left: 12px;
 	top: 7px;
 	position: absolute;
@@ -71,9 +71,12 @@ p {
 }
 
 /* Table classes */
+table {
+	font-size: 14px;
+}
+
 table.exTable {
 	width:90%;
-	font-size: inherit;
 }
 
 table.skTable {
@@ -96,8 +99,9 @@ td {
 	border: 1px;
 	border-style: solid;
 	border-color: #CECECF;
-	height:100%;
+	height: calc(100% - 30px);
 	overflow: scroll;
+	width: calc(100% - 2px);
 }
 
 .output-row {
@@ -169,6 +173,9 @@ input[type=text] {
 		font-size: 14px;
 	}
 	input[type=text] {
+		font-size: 14px;
+	}
+	table {
 		font-size: 14px;
 	}
 }
