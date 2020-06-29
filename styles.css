@@ -4,7 +4,7 @@
 	letter-spacing: 1px;
 	background-color: #010a00;
     font-family: Menlo, Consolas, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	font-size: 14px;
+	font-size: 16px;
 	margin: 0;
 }
 
@@ -21,14 +21,23 @@ p {
 	padding-left: 7px;
 	padding-top: 5px;
 	padding-bottom: 3px;
-	background-image: linear-gradient(DarkGrey, DimGrey);
-	box-shadow: 0 4px 2px 0 DimGrey;
+	background-image: linear-gradient(#F4F4F5, #CECDCE);
+	box-shadow: 0 4px 2px 0 #CECDCE;
 	display: flex;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	position: -webkit-sticky; /* Safari */
 	position: sticky;
- 	top: 0;
+	top: 0;
+}
+
+.macos-buttons {
+	min-width: 150px;
+	left: 12px;
+	top: 7px;
+	position: absolute;
+	display: flex;
+	align-items: center;
 }
 
 .title-buttons {
@@ -36,6 +45,14 @@ p {
   width: 0.75em;
   border-radius: 50%;
   margin-right: 0.5em;
+}
+
+.title-text {
+	color: #4C4C4B;
+	font-family: sans-serif;
+	width: 100%;
+	text-align: center;
+	letter-spacing: -.001em;
 }
 
 .title-buttons:first-child {
@@ -78,10 +95,9 @@ td {
 	padding-top: 4px;
 	border: 1px;
 	border-style: solid;
-	border-color: DimGrey;
+	border-color: #CECECF;
 	height:100%;
 	overflow: scroll;
-
 }
 
 .output-row {
@@ -130,7 +146,7 @@ input[type=text] {
 	background-color: transparent;
 	letter-spacing: 1px;
 	font-family:inherit;
-	font-size: 14px;
+	font-size: 16px;
 	outline: none;
 	width: 25%;
 	color: limegreen;
@@ -145,5 +161,14 @@ input[type=text] {
 
 	to { 
 		opacity: 0; 
+	}
+}
+
+@media (min-width: 650px) {
+	body {
+		font-size: 14px;
+	}
+	input[type=text] {
+		font-size: 14px;
 	}
 }
