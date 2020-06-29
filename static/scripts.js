@@ -1,8 +1,8 @@
 /* Initialise the log history & cursor position */
-let machineName = "root@tkr.onln ~ # "
+let machineName = "user@user ~ # "
 let terminalHistoryLog = []
 let cursorLogPosition = terminalHistoryLog.length
-const userBirthday = "08/11/1987"
+const userBirthday = "01/01/2000"
 
 /* Set some core DOM items */
 let terminalContainer = currentTerminalDiv = document.getElementsByClassName("terminal-container")[0]
@@ -28,6 +28,10 @@ const commandData = [
     {
         "name": "experience",
         "description": "The experience lists professional experience."
+    },
+    {
+        "name": "github",
+        "description": "Provides a link to the source code for this project."
     },
     {
         "name": "uptime",
@@ -59,95 +63,79 @@ const commandData = [
 
 const skillsData = [
     {
-        "name": "• Python"
+        "name": "• YOUR SKILL HERE"
     },
     {
-        "name": "• Django / Flask"
+        "name": "• YOUR SKILL HERE"
     },
     {
-        "name": "• PostgreSQL"
+        "name": "• YOUR SKILL HERE"
     },
     {
-        "name": "• JavaScript, some ReactJS"
+        "name": "• YOUR SKILL HERE"
     },
     {
-        "name": "• HTML & CSS"
+        "name": "• YOUR SKILL HERE"
     },
     {
-        "name": "• Hacking around in Bash"
-    },
-    {
-        "name": "• Requirements analysis & scoping"
-    },
-    {
-        "name": "• Technical project management"
-    },
-    {
-        "name": "• Technical writing / documentation"
-    },
-    {
-        "name": "• Client liaison"
-    },
-    {
-        "name": " ☕ Making good brews ☕ "
+        "name": "• YOUR SKILL HERE"
     }
 ]
 
 const experienceData = [
     {
-        "title": "Python Developer",
-        "company": "Reckon Digital",
-        "duration": "May 2020 - Present",
-        "location": "London"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "LDN, UK"
     },
     {
-        "title": "Operations Director",
-        "company": "By Association Only",
-        "duration": "Apr 2018 - May 2020",
-        "location": "Cambridge"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "CBG, UK"
     },
     {
-        "title": "Production Director",
-        "company": "Onespacemedia",
-        "duration": "Sep 2015 - Mar 2018",
-        "location": "Cambridge"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "CBG, UK"
     },
     {
-        "title": "Technical Product Owner",
-        "company": "Onespacemedia",
-        "duration": "Oct 2014 - Sep 2015",
-        "location": "Cambridge"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "CBG, UK"
     },
     {
-        "title": "Python Developer",
-        "company": "Onespacemedia",
-        "duration": "Jun 2013 - Oct 2014",
-        "location": "Cambridge"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "CBG, UK"
     },
     {
-        "title": "Software Developer",
-        "company": "Cambridge Consultants",
-        "duration": "Apr 2011 - Jul 2013",
-        "location": "Cambridge"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "CBG, UK"
     },
     {
-        "title": "Staff Journalist",
-        "company": "Assorted publications",
-        "duration": "Mar 2005 - Oct 2007",
-        "location": "Hannover, DE"
+        "title": "ROLE",
+        "company": "COMPANY NAME",
+        "duration": "FROM - TO",
+        "location": "HNVR, DE"
     }
 ]
 
 /* Content for the whois command. Designed to be a string of any length */
-const whoisContent = "<p>Hey, I\'m Thomas, and I\'m a technologist, software " +
-  "developer (mostly, back-end), writer and citizen based in London. \n" +
-  "For the last ten years, I\'ve worked agency-side in hands-on leadership " +
-  "roles with some of the largest science, finance and private innovation " +
-  "companies in Europe on projects to deliver technology products within " +
-  "complex, sophisticated organisations.</p>" +
-  "<p>I\'m interested in digital innovation, technology for citizen good, " +
-  "soul music and political theory. This weird little website is built in " +
-  "raw Javascript on the front, and Python on the back!</p>"
+const whoisContent = "<p>WHOIS CONTENT HERE</p>"
+
+const githubContent = "<p>- 🖥️ MINITERM ON GITHUB 🎉 -</p>" +
+  "<p>Miniterm is an open-source project by thomaskr. Get your own, today!</p>" +
+  "<p>" +
+  "<a href=\"https://github.com/thmsrmbld/miniterm\"target=\"_blank\">" +
+  "miniterm.github</a>" +
+  "</p>"
 
 const initialisePage = () => {
     /* Initialises the page. We just sequentially load in the initial page
@@ -223,6 +211,10 @@ const commandListener = () => {
                     break
                 case "experience":
                     experiencePrinter(experienceData)
+                    break
+                case "miniterm":
+                case "github":
+                    githubPrinter()
                     break
                 case "history":
                     historyPrinter(terminalHistoryLog)
@@ -366,6 +358,14 @@ const whoisPrinter = () => {
     siteContainer.insertBefore(whoisDiv, currentTerminalDiv)
 }
 
+const githubPrinter = () => {
+    /* Prints 'whois' details to screen */
+    let githubDiv = document.createElement("p")
+    githubDiv.innerHTML = githubContent
+    githubDiv.setAttribute("class", "ag output-row")
+    siteContainer.insertBefore(githubDiv, currentTerminalDiv)
+}
+
 const cdPrinter = () => {
     /* Prints 'cd' easter egg to screen */
     let cdDiv = document.createElement("p")
@@ -401,7 +401,7 @@ const commandNotFoundPrinter = (userInput, rawInput) => {
 const contactPrinter = () => {
     /* Prints contact details to screen */
     let contactDiv = document.createElement("div")
-    let email = "thomasrumbold@gmail.com"
+    let email = "user@email.com"
     contactDiv.innerHTML = '📧 <a href="mailto: ' + email + '?subject=Hello, Thomas!" target="_blank">' + email + '</a>'
     contactDiv.setAttribute("class", "ag output-row")
     siteContainer.insertBefore(contactDiv, currentTerminalDiv)
@@ -437,7 +437,7 @@ const mockLogin = () => {
 const mockCommands = () => {
     /* Micro function for showing which commands are available, called on
      first page load timer */
-    const instructionText = "- 🖥️ 'ls' lists valid commands. ⬆️ & ⬇️ arrows" +
+    const instructionText = "- 💻 'ls' lists valid commands. ⬆️ & ⬇️ arrows" +
       " cycle command history -"
     document.getElementsByClassName("command-list")[0].innerHTML = instructionText
 }
@@ -452,6 +452,5 @@ const loadUserInput = () => {
     document.getElementsByClassName("machine-name")[0].innerHTML = machineName
     terminalContainer.appendChild(userInput)
 }
-
 /* Just calls and runs the whole system :) */
 initialisePage()
