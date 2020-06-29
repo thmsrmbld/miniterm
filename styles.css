@@ -77,7 +77,6 @@ table {
 
 table.exTable {
 	width:90%;
-	font-size: inherit;
 }
 
 table.skTable {
@@ -102,6 +101,7 @@ td {
 	border-color: #CECECF;
 	height: calc(100% - 30px);
 	overflow: scroll;
+	width: calc(100% - 2px);
 }
 
 .output-row {
