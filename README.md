@@ -1,4 +1,4 @@
-# 🎉 🖥️ miniterm.online 🖥️ 🎉
+# 🖥️ miniterm.online 🎉
 
 ## Welcome to miniterm!
 
