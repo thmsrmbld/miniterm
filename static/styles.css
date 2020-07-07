@@ -100,7 +100,7 @@ td {
 	border-style: solid;
 	border-color: #CECECF;
 	height: calc(100% - 30px);
-	overflow: scroll;
+	overflow: auto;
 	width: calc(100% - 2px);
 }
 
