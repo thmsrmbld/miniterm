@@ -39,6 +39,7 @@ custom commands to create an interactive, command-line style personal / CV site!
 
 * There's no deployment, really - you'll just need to drop it into whatever
  stack you're going to host it on.
+* It will also deploy and run directly in Netlify with no modifications by specifying this Github repo.
  
 ## Contributing
 
