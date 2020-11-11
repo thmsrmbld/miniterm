@@ -50,7 +50,3 @@ custom commands to create an interactive, command-line style personal / CV site!
 
 * Free for personal use. I'd love to know if you use it and what you do with it
 ! 😊
-
-## Twitter
-
- [@thomas_k_r](https://twitter.com/thomas_k_r)
