@@ -7,7 +7,7 @@ personal portfolio website for back-end developers who are terrible at design. I
 emulates the behaviour of a bash / linux terminal - and you can add your own
 custom commands to create an interactive, command-line style personal / CV site!
 
-#### Check it out live and in action at: https://thomaskr.online/
+#### Check it out live and in action at: https://miniterm.ahumanfuture.co
 
 (Use the 'ls' command to list the commands it comes with.)
 
@@ -32,7 +32,7 @@ custom commands to create an interactive, command-line style personal / CV site!
 * It should be self explanatory where in the HTML / CSS files you'll need to
  add your own information.
 * There are no build steps, it's just three files.
-* There are definitely a few better ways to build this thing but I hacked it
+* There are definitely better ways to build this thing but I hacked it
  together over an evening, and it does the job :)
 
 ## Deploying miniterm

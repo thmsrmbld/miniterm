@@ -1,8 +1,19 @@
- /* Site-wide stuff */
- body {
-	color: white;
+/* Variables */
+:root {
+  --terminal-green: limegreen;
+  --terminal-bg: #010a00;
+  --terminal-text: white;
+  --title-bg-start: #F4F4F5;
+  --title-bg-end: #CECDCE;
+  --title-text: #4C4C4B;
+  --border-color: #CECECF;
+}
+
+/* Site-wide stuff */
+body {
+	color: var(--terminal-text);
 	letter-spacing: 1px;
-	background-color: #010a00;
+	background-color: var(--terminal-bg);
     font-family: Menlo, Consolas, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 	font-size: 16px;
 	margin: 0;
@@ -21,8 +32,8 @@ p {
 	padding-left: 7px;
 	padding-top: 5px;
 	padding-bottom: 3px;
-	background-image: linear-gradient(#F4F4F5, #CECDCE);
-	box-shadow: 0 4px 2px 0 #CECDCE;
+	background-image: linear-gradient(var(--title-bg-start), var(--title-bg-end));
+	box-shadow: 0 4px 2px 0 var(--title-bg-end);
 	display: flex;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
@@ -48,7 +59,7 @@ p {
 }
 
 .title-text {
-	color: #4C4C4B;
+	color: var(--title-text);
 	font-family: sans-serif;
 	width: 100%;
 	text-align: center;
@@ -96,9 +107,7 @@ td {
 /* General containers */
 .site-container {
 	padding-top: 4px;
-	border: 1px;
-	border-style: solid;
-	border-color: #CECECF;
+	border: 1px solid var(--border-color);
 	height: calc(100% - 30px);
 	overflow: auto;
 	width: calc(100% - 2px);
@@ -112,7 +121,7 @@ td {
 	padding-top: 2px;
 	padding-bottom: 4px;
 	color: inherit;
-	max-width: 750px;
+	max-width: 800px;
 }
 
 .input-row {
@@ -130,12 +139,11 @@ td {
 
 /* Green highlight */
 .green-hl {
-	color: limegreen;
+	color: var(--terminal-green);
 }
 
 /* Terminal & input classes */
 .terminal-input input:focus {
-	display: none;
 	position: absolute;
 	height: 80%;
 	top: 10%;
@@ -152,7 +160,7 @@ input[type=text] {
 	font-size: 16px;
 	outline: none;
 	width: 25%;
-	color: limegreen;
+	color: var(--terminal-green);
 	border: 0;
 	height: 20px;
 }
