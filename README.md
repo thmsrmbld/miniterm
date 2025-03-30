@@ -1,4 +1,4 @@
-# 🖥️ miniterm.online 🎉
+# 🖥️ miniterm 🎉
 
 ## Welcome to miniterm!
 
@@ -15,15 +15,14 @@ custom commands to create an interactive, command-line style personal / CV site!
 
 * Super simple / light - it's just three files of vanilla HTML, CSS and
  JavaScript.
-* Open-source and very easy to customise!
+* Open-source and easy to customise!
 * Sort of responsive. Kind of. Well...who's using terminal on their phone
  anyway?
 
 ## Get started now!
 
 * Because it's only three files of HTML, CSS and JS, you can do whatever you
- like with it. I host it on a tiny Flask (Python) application, but you could
- integrate it, really, with anything.
+ like with it. Netlify is an easy option.
 
 ## Notes
 
@@ -33,11 +32,11 @@ custom commands to create an interactive, command-line style personal / CV site!
  add your own information.
 * There are no build steps, it's just three files.
 * There are definitely better ways to build this thing but I hacked it
- together over an evening, and it does the job :)
+ together, and it does the job :)
 
 ## Deploying miniterm
 
-* There's no deployment, really - you'll just need to drop it into whatever
+* There's no deployment process really - you'll just need to drop it into whatever
  stack you're going to host it on.
 * It will also deploy and run directly in Netlify with no modifications by specifying this Github repo.
  
